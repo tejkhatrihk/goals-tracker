@@ -3,9 +3,10 @@ import useLocalStorage from './hooks/useLocalStorage';
 import GoalInput from './components/GoalInput';
 import GoalList from './components/GoalList';
 import './App.css'
+import { Typography, Box } from '@mui/material';
+import Layout from './components/Layout'
 
 function App() {
-  const [count, setCount] = useState(0)
   const [goals, setGoals] = useLocalStorage('dailyGoals', []);
 
   const addGoal = (goal) => {
@@ -24,14 +25,27 @@ function App() {
     setGoals(newGoals);
   };
 
-
   return (
     <>
-      <div className="App p-4">
-      <h1 className="text-2xl font-bold mb-4">Daily Goals Tracker</h1>
+    <Layout>
+    <Box sx={{ m: 4, p: 4, border: '1px solid #ccc', borderRadius: 2, boxShadow: 3 }}>
+      <div className="App container mx-auto p-4">
+      <Typography gutterBottom variant="h5" component="div">
+            Add Goals
+          </Typography>
       <GoalInput addGoal={addGoal} />
+      
+    </div>
+    </Box>
+    {
+    goals.length > 0 && 
+    <Box sx={{ m: 4, p: 4, border: '1px solid #ccc', borderRadius: 2, boxShadow: 3, mb: 10 }}>
+      <div className="container mx-auto p-4">      
       <GoalList goals={goals} toggleGoal={toggleGoal} deleteGoal={deleteGoal} />
     </div>
+    </Box>
+    }
+    </Layout>
     </>
   )
 }

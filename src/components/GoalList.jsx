@@ -1,13 +1,18 @@
-export default function GoalList({ goals, toggleGoal, deleteGoal }) {
+import { Cancel } from "@mui/icons-material";
+import { List, ListItem, Checkbox, Typography } from "@mui/material";
+
+export default function GoalList({ goals, toggleGoal, deleteGoal, showCheckboxes=true }) {
   return (
-    <ul>
+    <List>
       {goals.map((goal, index) => (
-        <li key={index} className="flex items-center mb-2">
-          <input type="checkbox" checked={goal.completed} onChange={() => toggleGoal(index)} />
-          <span className={`ml-2 ${goal.completed ? 'line-through' : ''}`}>{goal.text}</span>
-          <button onClick={() => deleteGoal(index)} className="ml-auto text-red-500">x</button>
-        </li>
+        <ListItem key={index} className="flex items-center mb-2">
+          {showCheckboxes && (
+            <Checkbox  checked={goal.completed} onChange={() => toggleGoal(index)} />
+          )}
+          <Typography className={`ml-2 ${goal.completed ? 'line-through' : ''}`}>{goal.text}</Typography>
+          <Cancel onClick={() => deleteGoal(index)} sx={{ ml: 'auto', color: 'red' }} />
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 }
