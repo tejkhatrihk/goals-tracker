@@ -13,7 +13,7 @@ export default function Menu() {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <InboxIcon nmp/>
+                <InboxIcon />
               </ListItemIcon>
               <ListItemText primary="Inbox" />
             </ListItemButton>
