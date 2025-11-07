@@ -1,16 +1,73 @@
-# React + Vite
+# Goals Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, responsive goals/to-do tracker built with React (Vite), Material UI, and Tailwind CSS. Goals are persisted to localStorage so they survive page reloads.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add new goals with validation (Enter key supported)
+- Toggle completion state
+- Delete goals
+- Persistent storage via localStorage
+- Material UI layout with AppBar and footer
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 + Vite
+- Material UI (MUI)
+- Tailwind CSS v4 (zero-config)
+- ESLint (React hooks + refresh rules)
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+	App.jsx            # Main app: state + handlers
+	components/
+		Layout.jsx       # AppBar, menu toggle, footer
+		Menu.jsx         # Simple menu (placeholder)
+		GoalInput.jsx    # Input and add button
+		GoalList.jsx     # List with checkbox + delete
+	hooks/
+		useLocalStorage.js # Persist state to localStorage
+	styles (index.css, App.css)
+```
+
+## Getting Started
+
+Prereqs: Node 18+ recommended.
+
+Development server:
+
+```
+npm install
+npm run dev
+```
+
+Lint:
+
+```
+npm run lint
+```
+
+Build:
+
+```
+npm run build
+npm run preview
+```
+
+## Roadmap / Ideas
+
+- Unique IDs for goals and better keys
+- Edit goal text inline
+- Filters: All / Active / Completed
+- Clear completed
+- Progress summary (x of y completed)
+- Undo/confirm on delete (MUI Snackbar)
+- Move menu into a left Drawer
+- Add tests with Vitest + React Testing Library
+- Consider TypeScript or PropTypes
+
+## License
+
+MIT
